@@ -11,10 +11,10 @@
 ```yaml <--Code Fenced-->
 full name: Rohit Roshan Jena
 located_in: Odisha , India
-job: Student
+job: software Engineer
 education: ["B.tech"]
-currently_learning: ["Kubernetes"]
-hobbies: ["Devops","Calisthenics","Seaweed"]
+currently_learning: ["GO"]
+hobbies: ["Calisthenics","Seaweed"]
 ```
 ```js <--Code Fenced-->
 - 🔭 I’m currently working on Kubernetes. 
