@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    /* overflow: hidden; */
+    /* background-color: #f5f5f5; Material light grey */
+}
+
+.container {
+    /* padding: 10px 20px 10px 20px; */
+    /* background-color: #ffffff; White background */
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); Slightly stronger shadow */
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+.countContainer{
+    width: fit-content;
+    align-content: center;
+    display: flex;
+}
+.ad{
+    width: 140px;
+    /* height: min-content; */
+}
+.test{
+    width: 80vw;
+    height: 100%;
+}
+
+
+.settings {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+}
+
+#TimerChar{
+    display: flex;
+    width: 40vw;
+    flex-direction: row;
+}
+
+label {
+    font-weight: bold;
+    justify-content: center;
+    align-content: center;
+    color: #53626e; /* Darker text color */
+    overflow: hidden;
+}
+
+input {
+    padding: 8px;
+    font-size: 16px;
+    width:40%;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 0px;
+    background-color: #4CAF50; /* Material Green */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    align-self: end;
+    border-radius: 10px;
+    width: 10vw;
+    text-transform:full-width;
+    font-size: 85%;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #388e3c; /* Darker shade of green for hover */
+}
+
+.test-container {
+    margin-top: 5px;
+}
+
+.live{
+    /* background-color: #f9f9f9; */
+    /* padding: 8px; */
+    border: 1px solid #ddd;
+    /* height: 35vh; */
+    /* overflow-y: scroll; */
+    /* font-size: 18px; */
+    line-height: 1.6;
+    border-radius: 10px;
+    /* background-color: #f5f5f5; Material grey for background */
+    user-select: none;
+    width: max-content;
+    min-width: 90px;
+    height: 100%;
+    align-self: center;
+    text-align: center;
+    background-color: black;
+    color: whitesmoke;
+    height: 35px;
+    align-content: center;
+}
+
+.generated-text {
+    /* background-color: #f9f9f9; */
+    padding: 15px;
+    border: 1px solid #ddd;
+    height: 35vh;
+    overflow-y: scroll;
+    font-size: 18px;
+    line-height: 1.6;
+    border-radius: 20px;
+    /* background-color: #f5f5f5; Material grey for background */
+    user-select: none;
+    width: 97%;
+}
+
+
+.invisible{
+    display: none;
+}
+
+textarea {
+    width: 97%;
+    align-self: center;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    font-family: inherit;
+    line-height: 1.6;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    resize:vertical;
+    overflow: auto;
+    height: 35vh;
+    padding: 15px;
+    /* background-color: #fff; */
+}
+
+.result {
+    display: flex;
+    flex-flow: row;
+    flex-basis: content;
+    justify-content:space-between;
+    gap: 5px;
+    align-content: center;
+}
+.status {
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555; /* Medium grey text for status */
+}
+#mistakes{
+    display: flex;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    label {
+        /* display: none; */
+        height: min-content;
+    }
+}
+
+span.red {
+    /* border-style: solid;
+    border-width: 1px;
+    padding: 1px;
+    border-radius: 5px;
+    background-color: rgba(255, 0, 0, 0.15);
+    border-color: rgba(255, 0, 0, 0.5); */
+    color: rgb(183, 3, 3);;
+}   
+
+span.yellow {
+    border-style: solid;
+    border-width: 0px;
+    padding: 1px;
+    border-radius: 5px;
+    /* background-color: rgba(255, 255, 0, 0.15); */
+    border-color: rgb(177, 174, 3);
+    color: rgba(42, 42, 42, 0);
+    -webkit-text-stroke: 0.3px #7272a5;
+    /* font-family: 'Courier New', Courier, monospace; */
+}
+span {
+    border-style: solid;
+    border-width: 0px;
+    padding: 0px;
+    border-radius: 5px;
+}
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- <h1>Typing Test</h1> -->
+    <div class="ad" id="adLeft">
+    </div>
+    <div class="test">
+         <div class="settings" id="settings">
+             <div class="invisible live" id="timer-text"></div>
+             <div class="invisible live" id="character-text"></div>
+             <div id="TimerChar">
+                 <div id="divtimer">
+                     <label for="timer">Timer (seconds):</label>
+                     <input type="number" id="timer" placeholder="Timer in seconds" value="300">
+                 </div>
+                 <div id="divChar">
+                     <label for="charCount">Character Count:</label>
+                     <input type="number" id="charCount" placeholder="Character count" value="750">
+                </div>
+             </div>
+                
+            <div style="align-self: flex-end;">
+                <button id="startBtn">Start🐳</button>
+            </div>
+                
+        </div>
+    
+
+         <div class="test-container">
+             <div class="generated-text" id="generatedText">...</div>
+             <div class="generated-text" id="ResultText" style="margin-top: 10px;">...</div>
+             <textarea class="invisible" id="userInput" placeholder="..." onpaste="return false;" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
+             <script>
+                 // Function to check if the generated-text div has text
+                 function checkGeneratedText() {
+                     const generatedText = document.getElementById('generatedText');
+                     const userInput = document.getElementById('userInput');
+         
+                     // If the generatedText div has content, enable the textarea, else disable it
+                     if (generatedText.textContent.trim() !== "") {
+                         userInput.disabled = false;
+                     } else {
+                         userInput.disabled = true;
+                     }
+                 }
+         
+                 // Run the function when the page loads to check initial content
+                 document.addEventListener("DOMContentLoaded", checkGeneratedText);
+         
+                 // Optionally, you can also set an interval to keep checking for changes (if needed)
+                 setInterval(checkGeneratedText, 1000); // Check every second (adjust as needed)
+             </script>
+             <div class="result">
+                 <div class="status" id="status">➿ Welcome 🚀</div>
+                 <div class="status" id="accuracy"></div>
+                 <div class="status" id="wpm"></div>
+                 <div class="status" id="speed"></div>
+                 <div class="status" id="errors"></div>
+             </div>
+             <div id="mistakes"></div>
+         </div>
+    </div>
+    <div class="ad" id="adRight">
+    </div>
+
+</div>
+
+<!-- <script src="app.js"></script> -->
+<script>
+document.getElementById('startBtn').addEventListener('click', startTest);
+
+let timer;
+let testEndTime;
+let timerDuration = 0;
+let totalCharacterCount = 0;
+let isTestRunning = false;
+let startTime;
+let correctCharacterCount = 0;  // Track correctly typed characters
+
+function startTest() {
+    // Get user inputs
+    timerDuration = parseInt(document.getElementById('timer').value) || 0;
+    totalCharacterCount = parseInt(document.getElementById('charCount').value) || 0;
+    if (this.textContent === "Start🐳") {
+        resetTest();
+        this.textContent = "Stop🤚"; // Change text to "Stop"
+        this.style.backgroundColor = "black";   // Change text color to red
+    } else {
+        this.textContent = "Start🐳"; // Change text back to "Start🐳"
+        this.style.backgroundColor = "green";   // Change text color to red
+        endTest();
+        return
+    }
+    // if (isTestRunning) {
+    //     alert('A test is already running. Please reset.');
+    //     return;
+    // }
+
+    if (!timerDuration && !totalCharacterCount) {
+        alert('Please set a timer or character count.');
+        return;
+    }
+
+    document.getElementById('timer-text').classList.toggle('invisible');
+    document.getElementById('divtimer').classList.toggle('invisible');
+
+    document.getElementById('userInput').classList.toggle('invisible');
+    document.getElementById('ResultText').classList.toggle('invisible');
+
+    document.getElementById('character-text').classList.toggle('invisible');
+    document.getElementById('divChar').classList.toggle('invisible');
+
+    document.getElementById('userInput').spellcheck = false;
+
+    // Reset test and inputs
+    // document.getElementById('userInput').value = '';
+    // Generate random text to be typed
+    if(totalCharacterCount === 0){
+        totalCharacterCount = 10*timerDuration;
+    }
+    generateText();
+
+    // Start typing test
+    isTestRunning = true;
+    document.getElementById('status').textContent = 'Test started, start typing the above text!';
+
+    // Set timer if specified
+    if (timerDuration) {
+        startTime = Date.now();
+        testEndTime = Date.now() + timerDuration * 1000;
+        timer = setInterval(checkTimer, 1000);
+    } else {
+        startTime = Date.now();  // Track start time if no timer is set
+    }
+
+    // Add input listener
+    document.getElementById('userInput').addEventListener('input', onInput);
+}
+
+
+
+function checkTimer() {
+    if (Date.now() >= testEndTime && isTestRunning) {
+        endTest();
+    }else{
+        // Get the current time
+        var now = new Date().getTime();
+        
+        // Calculate the remaining time (difference between target date and current time)
+        var distance = testEndTime - now;
+
+        // Time calculations for days, hours, minutes, and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Build the countdown string
+        var countdownString = "";
+        
+        if (days > 0) countdownString += days + "d ";
+        if (hours > 0) countdownString += hours + "h ";
+        if (minutes > 0) countdownString += minutes + "m ";
+        if (seconds > 0 || distance <= 0) countdownString += seconds + "s";
+
+        // Display the result in the provided elementId
+        document.getElementById('timer-text').textContent = countdownString;
+
+        // If the countdown is finished, display a message
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById('timer-text').textContent = "EXPIRED";
+        }
+    }
+}
+
+function onInput(event) {
+    // Get the text area and current input
+    const userInput = event.target.value;
+    const generatedText = document.getElementById('generatedText').textContent;
+    document.getElementById('character-text').textContent = userInput.length;
+
+    // Check accuracy by comparing typed text with generated text
+    correctCharacterCount = 0;
+    for (let i = 0; i < userInput.length; i++) {
+        if (userInput[i] === generatedText[i]) {
+            correctCharacterCount++;
+        }
+    }
+
+    // Check if user has typed enough characters or completed the generated text
+    if (
+        (totalCharacterCount && userInput.length >= totalCharacterCount) ||
+        (userInput === generatedText)
+    ) {
+        endTest();
+    }
+}
+
+function generateText() {
+    
+    let generatedText = '';
+    
+    // Concatenate random sentences
+    while (generatedText.length <= totalCharacterCount) {
+        const randomIndex = Math.floor(Math.random() * sentences.length);
+        generatedText += sentences[randomIndex] + ' ';
+    }
+    // console.log(generatedText);
+    
+    // Ensure the total character count is respected
+    const finalText = generatedText.slice(0, totalCharacterCount); // Adjust the length if needed
+    // Display the generated text
+    document.getElementById('generatedText').textContent = finalText;
+}
+
+
+function endTest() {
+    if (isTestRunning){
+        isTestRunning = false;
+        clearInterval(timer);
+        document.getElementById('status').textContent = 'Test ended!';
+        document.getElementById('startBtn').textContent = "Start🐳";
+        document.getElementById('startBtn').style.backgroundColor = "green"; 
+        document.getElementById('timer-text').classList.toggle('invisible');
+        document.getElementById('divtimer').classList.toggle('invisible');
+        document.getElementById('character-text').classList.toggle('invisible');
+        document.getElementById('character-text').textContent = ''
+        document.getElementById('divChar').classList.toggle('invisible');
+        document.getElementById('ResultText').classList.toggle('invisible');
+        document.getElementById('userInput').classList.toggle('invisible');
+        document.getElementById('userInput').spellcheck = true;
+        
+        // Calculate accuracy and speed
+        calculateAccuracyAndSpeed();
+    }
+}
+
+
+function calculateAccuracyAndSpeed() {
+    const userInput = document.getElementById('userInput').value;
+    const generatedText = document.getElementById('generatedText').textContent;
+
+    let correctCharacterCount = 0;
+    let generatedwords = generatedText.split(' ');
+    let userWords = userInput.split(' ');
+
+    let mistakes = [];
+    let Highlight = '';
+    let undefined = false;
+
+    // Loop through generatedText and compare each character with userInput
+    for (let i = 0; i < generatedwords.length; i++) {
+        if (userWords[i] === generatedwords[i]) {
+            Highlight += userWords[i]+ '<span>'+" "+'</span>';
+            correctCharacterCount+=generatedwords[i].length+1;
+        }else if(userWords[i]){
+            Highlight += '<span class="red">'+ userWords[i]+ '</span>' + '<span>'+" "+'</span>';
+            // console.log(userWords[i]);
+            mistakes.push(userWords[i])
+            correctCharacterCount++;
+        }else{
+            if(undefined){
+                Highlight += " "+generatedwords[i];
+            }else{
+                undefined = true;
+                Highlight += '<span class="yellow">'+ generatedwords[i];
+            }
+            // Highlight += '<span class="yellow">'+ generatedwords[i]+ '</span>' + '<span>'+" "+'</span>';
+        }
+        // else{
+        //     for(let j =0; j< min(userWords[i].length(),generatedwords[i].length()), j++){
+
+        //     }
+        // }
+    }
+    Highlight += '</span>'
+    
+    // Calculate accuracy: correct characters divided by total characters in the generated text
+    const accuracy = Math.min(100,(correctCharacterCount / totalCharacterCount) * 100);
+    
+    // Calculate speed: characters per minute
+    const endTime = Date.now();
+    const timeElapsed = (endTime - startTime) / 1000; // Time in seconds
+    const speed = (userInput.length / timeElapsed) * 60; // Speed in characters per minute
+    
+    // Calculate words per minute
+    const wordsTyped = userInput.length > 0 ? userWords.length : 0; // Split on spaces to count words
+
+    const wpm = ( wordsTyped / timeElapsed) * 60; // Words per minute
+    // console.log(correctCharacterCount,totalCharacterCount,accuracy,wpm,speed,timeElapsed,wordsTyped);
+
+    // Display results
+    document.getElementById('accuracy').textContent = `Accuracy: ${accuracy.toFixed(3)}%`;
+    document.getElementById('speed').textContent = `CPM: ${speed.toFixed(3)} `;
+    document.getElementById('wpm').textContent = `WPM: ${wpm.toFixed(3)} `;
+
+    // Handle error (for untyped characters or incorrect characters)
+    const untypedCount = Math.max(0, totalCharacterCount - userInput.length); // Characters not typed yet
+    const errorCount = Math.max(0, userInput.length - totalCharacterCount); // Extra characters typed
+    const incorrectCount = Math.max(0, userInput.length - correctCharacterCount); // Incorrectly typed characters
+    
+    const errorMessage = `Errors: ${incorrectCount + untypedCount + errorCount}`+ ' '+ `Untyped: ${untypedCount}`+ ' '+ `Extra: ${errorCount}`+ ' '+ `Incorrect: ${incorrectCount}`;
+    document.getElementById('errors').textContent = errorMessage;
+    
+    document.getElementById('ResultText').innerHTML = Highlight;
+}
+
+
+
+function resetTest() {
+    document.getElementById('userInput').value = '';
+    document.getElementById('generatedText').textContent = '';  // This clears the generated text area
+    document.getElementById('status').textContent = 'Started';
+    document.getElementById('accuracy').textContent = '';
+    document.getElementById('speed').textContent = '';
+    document.getElementById('wpm').textContent = '';
+    document.getElementById('errors').textContent = '';
+}
+
+// Function to insert Google AdSense ad
+function loadAdSenseAd() {
+    const adContainer = document.getElementById('adLeft');
+
+    // Create and append AdSense script
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+    document.head.appendChild(script);
+    
+    // Wait for the script to load, then insert the ad
+    script.onload = function() {
+        const adSlot = document.createElement('ins');
+        adSlot.className = "adsbygoogle";
+        adSlot.style.display = "block";
+        adSlot.setAttribute('data-ad-client', 'ca-pub-XXXXXX'); // Replace with your AdSense client ID
+        adSlot.setAttribute('data-ad-slot', 'XXXXXXX');         // Replace with your ad slot ID
+        adSlot.setAttribute('data-ad-format', 'auto');           // Ad format (auto, responsive, etc.)
+        
+        adContainer.appendChild(adSlot);
+
+        // Request an ad from Google
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    };
+}
+
+// Function to insert Amazon Associates ad
+function loadAmazonAd() {
+    const amazonAdContainer = document.getElementById('amazon-ad-container');
+
+    // Create and insert the Amazon Native Shopping Ad iframe
+    const amazonAdIframe = document.createElement('iframe');
+    amazonAdIframe.src = "https://www.amazon.com/exec/obidos/ASIN/B0000E2X1Y/your-associates-tag"; // Example ASIN & Associates Tag
+    amazonAdIframe.width = '300'; // Set the ad's width
+    amazonAdIframe.height = '250'; // Set the ad's height
+    amazonAdIframe.frameBorder = '0'; // Set the border to 0 for a clean look
+    amazonAdIframe.style.display = 'block'; // Optional, to ensure it behaves like a block element
+
+    amazonAdContainer.appendChild(amazonAdIframe);
+}
+
+// Function to insert Media.net ad
+function loadMediaNetAd() {
+    const mediaNetAdContainer = document.getElementById('adRight');
+
+    // Media.net Ad Script
+    const mediaNetScript = document.createElement('script');
+    mediaNetScript.src = "https://contextual.media.net/dotload/showad.js";  // Media.net JS
+    mediaNetScript.type = "text/javascript";
+    mediaNetScript.async = true;
+
+    // Set Media.net parameters
+    mediaNetScript.setAttribute('data-ad-client', 'XXXXXXX'); // Replace with your Media.net ad client ID
+    mediaNetScript.setAttribute('data-ad-slot', 'XXXXXXX');  // Replace with your Media.net ad slot ID
+
+    // Append the script to the body of the page
+    document.body.appendChild(mediaNetScript);
+    
+    // Create a div element to hold the ad
+    const mediaNetAd = document.createElement('div');
+    mediaNetAd.id = 'media-net-ad';
+    mediaNetAd.style.width = '300px';  // Set ad width
+    mediaNetAd.style.height = '250px'; // Set ad height
+    
+    mediaNetAdContainer.appendChild(mediaNetAd);
+
+    // Load the ad once the script is loaded
+    mediaNetScript.onload = function() {
+        window.contextualMediaAd.displayAds();
+    };
+}
+
+// Function to be called when the page loads
+function loadAds() {
+    loadAdSenseAd();    // Call the function to load Google AdSense ad
+    loadAmazonAd();     // Call the function to load Amazon Associates ad
+    loadMediaNetAd();   // Call the function to load Media.net ad
+}
+
+// Call the loadAds function once the page content is loaded
+window.onload = loadAds;
+</script>
+<script>
+const sentences = [
+    'The Entrepreneurship Development Conclave 2025, held in Pune on January 13, 2025, was inaugurated by Union Minister for Fisheries, Animal Husbandry, and Dairying, Shri Rajiv Ranjan Singh.',
+    'The conclave focused on empowering entrepreneurs and transforming livestock economies.',
+    'The Union Minister launched 40 projects under the National Livestock Mission (NLM) and the Animal Husbandry Infrastructure Development Fund (AHIDF), aimed at enhancing the livestock sector\'s productivity.',
+    'The event highlighted the importance of animal husbandry in rural economic development, with a particular focus on FMD vaccination programs for a disease-free Bharat.',
+    'The Minister emphasized government initiatives such as AHIDF, which supports dairy and meat processing, feed production, and veterinary infrastructure, and NLM, which provides capital subsidies for projects related to various livestock sectors.',
+    'He urged banks to simplify loan processes to support farmers and women entrepreneurs.',
+    'The conclave also marked the launch of the NLM Operational Guidelines 2.0 and a Monitoring Dashboard for the NLM scheme, as well as the declaration of Animal Husbandry and Animal Welfare Month (January 14 to February 13).',
+    'The event underscored Maharashtra\'s role in the sector\'s growth, particularly with efforts like the Lumpy Skin Disease vaccine, and saw discussions on entrepreneurship, processing, and the role of banks in livestock sector financing. This initiative highlights India\'s commitment to enhancing agricultural and rural sectors and fostering entrepreneurship in line with the Atmanirbhar Bharat mission.',
+    'The successful field evaluation trials of the indigenously developed Nag Mk 2, a third-generation Anti-Tank Fire-and-Forget Guided Missile, were conducted at the Pokhran Field Range in the presence of senior officers from the Indian Army. During the trials, the missile successfully destroyed all targets, demonstrating its effectiveness across both maximum and minimum ranges, thereby validating its firing range capabilities. The missile\'s performance during the trials, along with the Nag Missile Carrier version-2, has confirmed that the entire weapon system is now ready for induction into the Indian Army. Raksha Mantri Shri Rajnath Singh congratulated the DRDO, the Indian Army, and the associated industry for their efforts in making the missile system ready for deployment. Dr. Samir V. Kamat, Secretary of the Department of Defence R&D and Chairman of DRDO, also appreciated the contributions of all stakeholders in ensuring the successful development and testing of the missile. This achievement reflects India\'s advancements in indigenous defense technology and contributes to the nation\'s self-reliance in the defense sector, aligned with the goals of Atmanirbhar Bharat. The successful trials underscore India\'s growing capabilities in developing advanced military technology to strengthen its defense preparedness.',
+    'Captain Peter Varghese, Commanding Officer of INS Tushil, will meet senior Nigerian Navy leaders, including Rear Admiral MG Oamen, to discuss enhancing bilateral naval cooperation.',
+    'The ship was warmly welcomed by Nigerian Navy officers, Indian High Commission officials, and the Indian diaspora.',
+    'INS Tushil, a guided missile stealth frigate of the Indian Navy, arrived in Lagos, Nigeria, on 12 January 2025 for an operational turnaround as part of its deployment to the Gulf of Guinea.',
+    'Launch of \'Utkarsh\': The second Multi-Purpose Vessel (MPV) for the Indian Navy, built by L&T Shipyard, was launched on 13th January 2025 at Kattupalli, Chennai.',
+    'The ship was launched by Dr. Smt. Sushmita Misra Singh, spouse of Defence Secretary Rajesh Kumar Singh.',
+    'Named \'Utkarsh\', meaning "Superior in Conduct, eflecting its multi-dimensional capabilities.',
+    'The 106-meter vessel can tow ships, launch/recover targets, operate unmanned autonomous vehicles, and act as a trial platform for indigenous weapons and sensors.',
+    'Designed for a maximum speed of 15 knots.',
+    'The contract for two MPVs was signed between the Ministry of Defence and L&T Shipyard on 25th March 2022.',
+    'Part of the Aatmanirbhar Bharat and Make in India initiatives.',
+    'Highlights the Indian Navy\'s commitment to indigenous shipbuilding and private sector involvement in defense production.',
+    'Centre for Development of Telematics (C-DOT) signed an agreement with IIT Mandi and IIT Jammu.',
+    'The collaboration focuses on developing a "Wideband Spectrum-Sensor ASIC-Chip" to enhance spectrum utilization.',
+    'The project is part of the Telecom Technology Development Fund (TTDF) under the Department of Telecommunications.',
+    'TTDF supports Indian startups, academia, and R&D institutions for telecommunication innovations.',
+    'To design reliable wideband spectrum sensing (WSS) algorithms for better spectrum efficiency.',
+    'Enable cognitive radios to detect and utilize under-utilized spectrum bands (white spaces).',
+    'Develop hardware-friendly algorithms for spectrum sensing beyond 2 GHz bandwidth.',
+    'Create efficient hardware architectures with short sensing times, high data throughput, and enhanced efficiency.',
+    'Target 6 GHz satellite bands (5.925–7.125 GHz) for wideband cognitive radio applications.',
+    'Transition from FPGA-based emulation to ASIC semiconductor chip implementation.',
+    'Boost spectrum utilization efficiency, particularly for broadband in rural India.',
+    'Create intellectual properties (IPs) for wideband spectrum sensing technologies.',
+    'Contribute to the India Semiconductor Mission and Make-in-India initiatives.',
+    'The agreement signing was attended by key stakeholders, including Dr. Raj Kumar Upadhyay (CEO, C-DOT), Dr. Rahul Shrestha (IIT Mandi), and Dr. Rohit B. Chaurasiya (IIT Jammu).',
+    'Aligns with Atmanirbhar Bharat\'s vision for self-reliance in telecommunications.',
+    'Enhances India\'s R&D capabilities in dynamic spectrum access technologies.',
+    'India is the world\'s largest democracy, with over 1.4 billion people.',
+    'The Indian film industry, known as Bollywood, produces more films than any other country.',
+    'The Taj Mahal, a UNESCO World Heritage site, attracts millions of visitors every year.',
+    'India\'s diversity includes 22 officially recognized languages, including Hindi, Bengali, and Telugu.',
+    'India is home to the world\'s largest postal network, with over 150,000 post offices.',
+    'The Indian Space Research Organisation (ISRO) has made significant strides in space exploration.',
+    'India\'s economy is the 5th largest in the world by nominal GDP as of 2024.',
+    'The Ganges River, considered holy in Hinduism, flows through northern India.',
+    'India is the birthplace of major world religions like Hinduism, Buddhism, Sikhism, and Jainism.',
+    'The Indian Independence movement, led by figures like Mahatma Gandhi, inspired global movements for freedom.',
+    'India has a rapidly growing tech industry, with major hubs in cities like Bangalore and Hyderabad.',
+    'The ancient city of Varanasi is one of the world\'s oldest continually inhabited cities.',
+    'India is known for its rich tradition of classical music, including the two major styles of Hindustani and Carnatic.',
+    'Cricket is the most popular sport in India, and the Indian Premier League (IPL) is watched by millions.',
+    'The Indian rail network is one of the largest and busiest in the world, covering over 65,000 km.',
+    'In 2019, India became the world\'s largest producer of milk, surpassing the European Union.',
+    'Indian cuisine is known for its use of spices like cumin, turmeric, and coriander, which give dishes their distinct flavors.',
+    'India\'s national animal, the Bengal tiger, is found in the Sundarbans and other parts of the country.',
+    'India\'s ancient art forms include dance styles like Bharatanatyam, Kathak, and Odissi.',
+    'The state of Kerala is famous for its backwaters, where houseboats offer a unique way to explore the region.',
+    'India is home to the world\'s largest democracy, which holds elections every five years.',
+    'The "Make in India" initiative aims to boost manufacturing and create jobs in various sectors.',
+    'Yoga, which originated in India, is practiced by millions worldwide for its health benefits.',
+    'The Indian economy is heavily influenced by agriculture, with crops like rice, wheat, and sugarcane being staple products.',
+    'India is the largest producer of textiles and garments in the world, and the textile industry is a major contributor to the economy.',
+    'The "Swachh Bharat Abhiyan" (Clean India Mission) is an initiative to improve sanitation and cleanliness across the country.',
+    'India\'s contribution to mathematics includes the invention of the concept of zero and the decimal system.',
+    'The iconic "Red Fort" in Delhi was the residence of Mughal emperors for over 200 years.',
+    'India is home to the world\'s second-largest population, with over 1.4 billion people.',
+    'The Indian monsoon season is vital to the country\'s agriculture, bringing much-needed rainfall.',
+    'The Indian "Babu" culture refers to the quirky yet hardworking government employees across the country.',
+    'The ancient city of Delhi has been the seat of several important empires, including the Maurya, Gupta, Mughal, and British Empires.',
+    'India has a rich tradition of storytelling, with ancient texts like the Ramayana and Mahabharata forming the foundation of its mythology.',
+    'Saris, turbans, and dhotis are traditional Indian garments, each symbolizing different cultural and regional identities.',
+    'India is the world\'s largest producer of spices, including pepper, cardamom, and saffron.',
+    'India celebrates festivals like Diwali, Holi, and Durga Puja with grand celebrations and rituals.',
+    'The Satyagraha movement, led by Mahatma Gandhi, emphasized nonviolent resistance in the struggle for Indian independence.',
+    'India\'s national sport is field hockey, and the country has won 8 Olympic gold medals in the sport.',
+    'The Indian film industry is not just Bollywood; it also includes Tollywood (Telugu films), Kollywood (Tamil films), and others.',
+    'The state of Rajasthan is known for its beautiful palaces, forts, and the Thar Desert.',
+    'The Indian Ocean borders India to the south, making it an important center for maritime trade.',
+    'The Khajuraho temples, known for their intricate sculptures and architecture, are UNESCO World Heritage sites.',
+    'The famous Indian festival of Diwali celebrates the victory of light over darkness and good over evil.',
+    'Indian literature includes works from authors like Rabindranath Tagore, R.K. Narayan, and Arundhati Roy.',
+    'The idea of "Atithi Devo Bhava" in Indian culture means "The guest is God," reflecting India\'s hospitality.',
+    'India has some of the world\'s largest and busiest cities, including Mumbai, Delhi, and Bangalore.',
+    'The Jaipur Literature Festival is one of the largest literary festivals in the world.',
+    'India is known for its vibrant art scene, from the folk art of Madhubani to the contemporary works displayed in galleries.',
+    'The Kumbh Mela, a religious pilgrimage, is one of the largest human gatherings in the world.',
+    'India\'s first satellite, Aryabhata, was launched in 1975, marking India\'s entry into space exploration.',
+    'The Ajanta and Ellora caves in Maharashtra are renowned for their ancient rock-cut temples and beautiful wall paintings.',
+    'India has a growing startup ecosystem, with cities like Bengaluru and Gurugram being prominent tech hubs.',
+    'The "Mangalyaan" mission, launched by ISRO in 2013, made India the first Asian nation to reach Mars orbit.',
+    'The "Chennai Express" is one of Bollywood\'s biggest blockbusters, featuring the legendary Shah Rukh Khan.',
+    'India\'s major rivers include the Ganga, Yamuna, and Brahmaputra, which play important roles in the country\'s culture and agriculture.',
+    'The Indian Premier League (IPL) revolutionized cricket, making it a global phenomenon.',
+    'The Indian classical dance form of Kathakali is known for its elaborate costumes and face makeup.',
+    'India has a rich tradition of poetry, with famous poets like Mirza Ghalib and Kabir shaping its literary history.',
+    'The beautiful hill stations of India, like Shimla, Darjeeling, and Ooty, offer serene retreats from the heat of the plains.',
+    'The Indian space program continues to thrive, with projects like the Chandrayaan missions exploring the Moon.',
+    'The 2010 Commonwealth Games, held in Delhi, were a significant milestone for Indian sports and infrastructure.',
+    'The Ratha Yatra in Puri, Odisha, is one of the most famous chariot festivals in India, attracting millions of devotees.',
+    'India\'s railways, established during British rule, continue to be a vital part of the country\'s transport infrastructure.',
+    'The Indian music industry is a blend of classical, folk, and modern genres, with Bollywood soundtracks dominating popular music.',
+    'The Great Indian Bustard, a critically endangered species, is found in parts of Rajasthan and Gujarat.',
+    'Chai, or tea, is an integral part of daily life in India, with roadside tea stalls (tapris) offering a social space for conversation.',
+    'The Indian cricketer Sachin Tendulkar is regarded as one of the greatest players in the history of the sport.',
+    'The Indian art of rangoli, created with colored powders, is a popular decoration during festivals.',
+    'India\'s diverse landscape includes the Himalayan mountains, the Thar desert, and the lush Western Ghats.',
+    'India\'s famous Golden Temple, located in Amritsar, is a key pilgrimage site for Sikhs worldwide.',
+    'The Durga Puja festival is celebrated with grand processions and elaborate rituals across West Bengal and parts of India.',
+    'The Red Fort in Delhi symbolizes the power and grandeur of India\'s Mughal rulers.',
+    'The state of Goa, known for its beaches and Portuguese-influenced culture, is a popular tourist destination.',
+    'India\'s film industry produces more movies annually than any other country in the world.',
+    'The "Startup India" initiative aims to support and encourage entrepreneurship across the country.',
+    'India has 29 states, each with its own unique culture, cuisine, and language.',
+    'The Keralite martial art form of Kalaripayattu is one of the oldest in the world.',
+    'India\'s solar energy capacity has rapidly expanded, with the country being a global leader in renewable energy initiatives.',
+    'India\'s Prime Minister, Narendra Modi, has been instrumental in implementing major economic reforms.',
+    'The "Rupee" is India\'s official currency, and its symbol was designed by Udaya Kumar in 2010.',
+    'India is known for its vibrant festivals like Holi, Diwali, Eid, and Christmas, celebrated with enthusiasm across the country.',
+    'The Mysore Palace in Karnataka is one of India\'s most famous and visited royal residences.',
+    'The Himalayas, which stretch across India\'s northern border, are home to many sacred sites and pilgrimage routes.',
+    'AI Touch Receives Grant to Develop AI-Driven 5G RAN Platform with RIC (RAN Intelligent Controller), SMO (Service Management and Orchestration), and NWDAF (Network Data Analytics Function) Under DoT\'s TTDF (Telecom Technology Development Fund) Scheme',
+    'AI Touch LLP has been awarded funding under the Department of Telecommunications\' TTDF scheme of USOF (now "Digital Bharat Nidhi").',
+    'AI Touch will develop components for disaggregated 5G RAN (Radio Access Network) including RAN Intelligent Controller (RIC), Service Management and Orchestration (SMO), and Network Data Analytics Function (NWDAF) modules.',
+    'The Vice-President of India, Shri Jagdeep Dhankhar today said, "VIP culture is an aberration, it is an incursion when viewed through the anvil of equality.',
+    'It should have no place in society, much less in religious places. The very idea of VIP darshan militates against divinity. It should be dispensed with," he remarked.',
+    'Calling for equality in religious institutions, he added, "Religious institutions are emblematic of equality since there is no individual higher before the Almighty, the God. We should re-instil the idea of equality in religious institutions.',
+    'I hope this Dharmasthala, being led by a luminary of all times, will serve as an example of egalitarianism and let us shun for all times VIP culture."',
+    'Exam Warriors Art Festival to overcome from exam stress through Art.The Exam Warriors Art Festival was organized at Shantipath, New Delhi on January 4, 2025.',
+    'Prime Minister will dedicate three frontline naval combatants INS Surat, INS Nilgiri and INS Vaghsheer to the nation on their commissioning at the Naval Dockyard in Mumbai.',
+    'The commissioning of three major naval combatants marks a significant leap forward in realizing India\'s vision of becoming a global leader in defence manufacturing and maritime security.',
+    'INS Surat, the fourth and final ship of the P15B Guided Missile Destroyer Project, ranks among the largest and most sophisticated destroyers in the world.',
+    'It has an indigenous content of 75% and is equipped with state-of-the-art weapon-sensor packages and advanced network-centric capabilities.',
+    'INS Nilgiri, the first ship of the P17A Stealth Frigate Project, has been designed by the Indian Navy\'s Warship Design Bureau and incorporates advanced features for enhanced survivability, seakeeping, and stealth, reflecting the next generation of indigenous frigates.',
+    'INS Vaghsheer, the sixth and final submarine of the P75 Scorpene Project, represents India\'s growing expertise in submarine construction and has been constructed in collaboration with the Naval Group of France.'  
+];
+
+</script>
+</body>
+</html>
