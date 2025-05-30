@@ -17,8 +17,8 @@ currently_learning: ["GO"]
 hobbies: ["Calisthenics","Seaweed"]
 ```
 ```js <--Code Fenced-->
-- 🔭 I’m currently working on Kubernetes. 
-- 🤓 Interested in DSA, WebDev, Devops.
+- 🔭 I’m currently working on OpenTofu. 
+- 🤓 Interested in DSA, Golang, Devops.
 - 🤔 I’m looking for help with Devops.
 - 😄 Pronouns: He/Him .
 - ❤‍🔥 Love Colours.
