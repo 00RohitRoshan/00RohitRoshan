@@ -8,6 +8,7 @@
 [![Whatsapp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp-clone-web.netlify.app/)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/00rohitroshan/)
 [![mail](https://img.shields.io/badge/gmail-%23DD0031.svg?&style=for-the-badge&logo=gmail&logoColor=white)](mailto:00rohitroshan@gmail.com)
+<img align="right" width="300" src="https://watermill.io/img/gopher.svg">
 ```yaml <--Code Fenced-->
 full name: Rohit Roshan Jena
 located_in: Odisha , India
