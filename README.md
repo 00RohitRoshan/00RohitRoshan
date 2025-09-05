@@ -1,4 +1,5 @@
-# Hi there 👋 this is **Rohit Roshan** ![Visitor Count](https://profile-counter.glitch.me/0-0Rohit-Roshan/count.svg)
+# Hi there 👋 this is **Rohit Roshan** 
+<!--![Visitor Count](https://profile-counter.glitch.me/0-0Rohit-Roshan/count.svg)-->
 ![](https://github.com/vikumkbv/vikumkbv/blob/master/icons/header_.png)
 
 ### Connect with me : <img align="center" src="https://github.com/rajput2107/rajput2107/blob/master/Assets/Handshake.gif" height="33px" />
@@ -28,6 +29,13 @@ hobbies: ["Calisthenics","Seaweed"]
 
 
 [![Rohit's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=00RohitRoshan&theme=gotham&bg_color=FFFFFF00)](https://github.com/Ashutosh00710/github-readme-activity-graph)
+<p align="right">
+  <a href="https://git-skyline.huakun.tech/contribution/github/00RohitRoshan">
+    View my commits in 3D Skyline
+  </a>
+</p>  
+
+
 
 
 <table>
@@ -55,16 +63,14 @@ hobbies: ["Calisthenics","Seaweed"]
     </td>
   </tr>
  </table>
-
-
-
+ 
 
 
 <!-- ![LeetCode](https://github-readme-streak-stats.herokuapp.com/?user=rohitroshanjena2017) -->
 
 
 
-
+<!--
 Tools |Preference
 --|--
 **Work Space** | ![Laptop](https://img.shields.io/badge/asus%20laptop-000000?style=for-the-badge&logo=asus&logoColor=white)
@@ -72,8 +78,8 @@ Tools |Preference
 **Browser** | ![Edge](https://img.shields.io/badge/Microsoft_Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white)    ![Tor](https://img.shields.io/badge/Tor_Browser-7D4698?style=for-the-badge&logo=Tor-Browser&logoColor=white)    ![Vivaldi](https://img.shields.io/badge/Vivaldi-EF3939?style=for-the-badge&logo=Vivaldi&logoColor=white)
 **Terminal** | ![Alacrity](https://img.shields.io/badge/alacritty-F46D01?style=for-the-badge&logo=alacritty&logoColor=white)   ![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)    ![Bash](https://img.shields.io/badge/GNU%20Bash-4EAA25?style=for-the-badge&logo=GNU%20Bash&logoColor=white)
 **Virtualization** | ![VirtualBox](https://img.shields.io/badge/VirtualBox-21416b?style=for-the-badge&logo=VirtualBox&logoColor=white)   ![VMware](https://img.shields.io/badge/VMware-231f20?style=for-the-badge&logo=VMware&logoColor=white)
+-->
 
-[Skyline](https://git-skyline.huakun.tech/contribution/github/00RohitRoshan)
 
 
 <!--
@@ -90,7 +96,7 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: .....
 -->
-
+<!--
 <div align="center">
 	<br>
 	<br>
@@ -104,7 +110,7 @@ Here are some ideas to get you started:
 	<br>
 </div>
 
-
+-->
 
 
 
