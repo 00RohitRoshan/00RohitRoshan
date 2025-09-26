@@ -28,7 +28,7 @@ hobbies: ["Calisthenics","Seaweed"]
 ```
 
 
-[![Rohit's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=00RohitRoshan&theme=gotham&bg_color=FFFFFF00)](https://github.com/Ashutosh00710/github-readme-activity-graph)
+[![Rohit's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=00RohitRoshan&theme=gotham&bg_color=FFFFFF00&days=40&height=300&custom_title=👀%20commits%20in%20past%2040%20days)](https://github.com/Ashutosh00710/github-readme-activity-graph)
 <p align="right">
   <a href="https://git-skyline.huakun.tech/contribution/github/00RohitRoshan">
     View my commits in 3D Skyline
