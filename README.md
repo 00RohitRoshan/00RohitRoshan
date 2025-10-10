@@ -38,7 +38,7 @@ hobbies: ["Calisthenics","Seaweed"]
 
 
 
-<table>
+<!-- <table>
   <tr>
     <td>
        <a href="https://github.com/anuraghazra/github-readme-stats"><img alt="Rohit's Github Stats" src="https://github-readme-stats.vercel.app/api?username=00RohitRoshan&show_icons=true&count_private=true&theme=react&hide_border=true&bg_color=FFFFFF00" /></a>
@@ -62,9 +62,21 @@ hobbies: ["Calisthenics","Seaweed"]
       <a href="https://github.com/vn7n24fzkq/github-profile-summary-cards"><img src="http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=00RohitRoshan&theme=gotham&hide_border=true" /></a>
     </td>
   </tr>
- </table>
+ </table> -->
  
-
+<table>
+  <tr>
+    <td>
+       <a href="https://github.com/DenverCoder1/github-readme-streak-stats"><img src="https://github-readme-streak-stats.herokuapp.com/?user=00RohitRoshan&stroke=ffffff&background=FFFFFF00&ring=5BCDEC&fire=5BCDEC&currStreakNum=ffffff&currStreakLabel=5BCDEC&sideNums=ffffff&sideLabels=ffffff&dates=ffffff&hide_border=true" /></a>
+    </td>
+	  <td>
+       <a href="https://github.com/anuraghazra/github-readme-stats"><img alt="Rohit's Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=00RohitRoshan&langs_count=6&count_private=true&layout=compact&theme=react&hide_border=true&bg_color=FFFFFF00"/></a>
+    </td> 
+    <td>
+      <a href="https://github.com/vn7n24fzkq/github-profile-summary-cards"><img src="http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=00RohitRoshan&theme=gotham&hide_border=true" /></a>
+    </td>
+  </tr>
+ </table>
 
 <!-- ![LeetCode](https://github-readme-streak-stats.herokuapp.com/?user=rohitroshanjena2017) -->
 
